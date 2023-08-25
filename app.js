@@ -1,4 +1,5 @@
 console.clear();
+console.log('================================================================');
 //node app.js 15139124 15139125
 //================================================================
 //#region Consts
@@ -85,12 +86,21 @@ for(i = 0; i < contracts.length; i++)
 //returns null if the transaction has nothing to say
 const GetTxInfo = (tx) => {
     //console.log(tx);
+    if(!tx.to)
+        return;
     let i = GetContractAddressIndex(tx.to);
     if(i == -1)
         return null;
     //continue check
     const decodedData = contractsInterface[i].parseTransaction({ data: tx.input, value: tx.value});
-    console.log(decodedData);
+    
+    //recognize the function and get the args
+    switch(decodedData.name){
+        case 'setText':
+            print(decodedData.args);
+            break;
+
+    }
     return null;
 };
 
