@@ -84,13 +84,14 @@ for(i = 0; i < contracts.length; i++)
 
 //returns null if the transaction has nothing to say
 const GetTxInfo = (tx) => {
-    console.log(3);
-    i = GetContractAddressIndex(tx.to);
+    //console.log(tx);
+    let i = GetContractAddressIndex(tx.to);
     if(i == -1)
         return null;
     //continue check
     const decodedData = contractsInterface[i].parseTransaction({ data: tx.input, value: tx.value});
     console.log(decodedData);
+    return null;
 };
 
 //#endregion
@@ -139,7 +140,6 @@ for(let currentBlock = startBlockNumber; currentBlock < endBlockNumber; currentB
     print('Block', currentBlock, ':');
     transactions = await GetBlockTxsForced(currentBlock);
     i = transactions.length;
-    console.log(i)
     while(i-- > 0){
         info = GetTxInfo(transactions[i]);
         if(info)
