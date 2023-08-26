@@ -93,11 +93,11 @@ const GetTxInfo = (tx) => {
         return null;
     //continue check
     const decodedData = contractsInterface[i].parseTransaction({ data: tx.input, value: tx.value});
-    
+    const args = decodedData.args;
     //recognize the function and get the args
     switch(decodedData.name){
         case 'setText':
-            print(decodedData.args);
+            return [args.key, args.value];
             break;
 
     }
@@ -120,7 +120,10 @@ console.log("Into:", targetFile);
 const writeStream = fs.createWriteStream(targetFile);
 const write = (obj) => {
     console.log(obj);
-    writeStream.write(obj + ',\n');
+    if(typeof(obj) == 'string')
+        writeStream.write(obj);
+    else
+        writeStream.write(",\n" + JSON.stringify(obj));
 };
 const print = console.log;
 
@@ -146,6 +149,7 @@ let transactions = null;
 let info = null;
 i = 0;
 
+write("[null");
 for(let currentBlock = startBlockNumber; currentBlock < endBlockNumber; currentBlock++){
     print('Block', currentBlock, ':');
     transactions = await GetBlockTxsForced(currentBlock);
@@ -156,8 +160,7 @@ for(let currentBlock = startBlockNumber; currentBlock < endBlockNumber; currentB
             write(info);
     }
 }
-
-
+write("\n]");
 
 
 
