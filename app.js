@@ -1,6 +1,40 @@
 console.clear();
 console.log('================================================================');
-//node app.js 15139124 15139125
+/*PLAN 26/8/2023
+start = 15834260
+end = 17997944
+delta = 108184
+
+node app.js 15834260 15942444{
+    //break at 15924404 due to the heavy rain
+    node app.js 15834260 15942444
+    //start again
+    node app.js 15924404 15942444
+}
+
+
+
+node app.js 15942444 16050628
+node app.js 16050628 16158812
+node app.js 16158812 16266996
+node app.js 16266996 16375180
+node app.js 16375180 16483364
+node app.js 16483364 16591548
+node app.js 16591548 16699732
+node app.js 16699732 16807916
+node app.js 16807916 16916100
+node app.js 16916100 17024284
+node app.js 17024284 17132468
+node app.js 17132468 17240652
+node app.js 17240652 17348836
+node app.js 17348836 17457020
+node app.js 17457020 17565204
+node app.js 17565204 17673388
+node app.js 17673388 17781572
+node app.js 17781572 17889756
+node app.js 17889756 17997944
+*/
+
 //================================================================
 //#region Consts
 
