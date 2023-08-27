@@ -11,10 +11,15 @@ node app.js 15834260 15942444{
     //start again
     node app.js 15924404 15942444
 }
-
-
-
-node app.js 15942444 16050628
+node app.js 15942444 16050628{
+    delta = 54092
+    node app.js 15942444 15996536 1.json
+    node app.js 15996536 16050628 2.json
+    error at 15971153       //node app.js 15971153 15996536 1.json
+    //0x5c0a62b860c3a8f9eccbe8826817d33c1ce073381146e022e2eaf2c9d1582596
+    error at 16029810       //node app.js 16029810 16050628 2.json
+    //0x8b59ab066ec4d0695793a0f9397142de073840598b83c93a04b6ea6f5e1b054b
+}
 node app.js 16050628 16158812
 node app.js 16158812 16266996
 node app.js 16266996 16375180
@@ -126,14 +131,20 @@ const GetTxInfo = (tx) => {
     if(i == -1)
         return null;
     //continue check
-    const decodedData = contractsInterface[i].parseTransaction({ data: tx.input, value: tx.value});
-    const args = decodedData.args;
-    //recognize the function and get the args
-    switch(decodedData.name){
-        case 'setText':
-            return [args.key, args.value];
-            break;
+    try {
+        const decodedData = contractsInterface[i].parseTransaction({ data: tx.input, value: tx.value});
+        const args = decodedData.args;
+        //recognize the function and get the args
+        switch(decodedData.name){
+            case 'setText':
+                return [args.key, args.value];
+                break;
 
+        }
+    }
+    catch(e){
+        print("Error at", tx.hash);
+        return null;    
     }
     return null;
 };
