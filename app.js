@@ -20,9 +20,28 @@ node app.js 15942444 16050628{
     error at 16029810       //node app.js 16029810 16050628 2.json
     //0x8b59ab066ec4d0695793a0f9397142de073840598b83c93a04b6ea6f5e1b054b
 }
-node app.js 16050628 16158812
-node app.js 16158812 16266996
-node app.js 16266996 16375180
+node app.js 16050628 16158812{
+    delta = 54092
+    node app.js 16050628 16104720 1.json
+    node app.js 16104720 16158812 2.json
+}
+node app.js 16158812 16266996{
+    delta = 54092
+    node app.js 16158812 16212904 3.json
+    node app.js 16212904 16266996 4.json
+
+    //node app.js 16158812 16212904 0.json
+
+    node app.js 16175898 16212904 1.json
+    node app.js 16176908 16212904 0.json
+
+    3+1+0+4
+}
+node app.js 16266996 16375180{
+    delta = 54092
+    node app.js 16266996 16321088 st1.json
+    node app.js 16321088 16375180 st2.json
+}
 node app.js 16375180 16483364
 node app.js 16483364 16591548
 node app.js 16591548 16699732
@@ -206,6 +225,7 @@ for(let currentBlock = startBlockNumber; currentBlock < endBlockNumber; currentB
     }
 }
 write("\n]");
+JSON.stringify
 
 
 
