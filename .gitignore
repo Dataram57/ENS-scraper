@@ -3,3 +3,5 @@ package.json
 package-lock.json
 result.json
 scans/*
+unique_data.js
+result.txt

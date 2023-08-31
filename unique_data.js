@@ -28,4 +28,11 @@ fs.readdir('./scans',(err, files) => {
         }
     });
     fs.writeFileSync('result.json', JSON.stringify(data));
+    let temp = '';
+    for (let prop in data)
+        if(data.hasOwnProperty(prop))
+            if(data[prop].length)
+                temp += prop + ": " + data[prop].length + "\n";
+    fs.writeFileSync('result.txt', temp);
+    console.log(temp);
 });
