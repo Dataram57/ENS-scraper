@@ -19,7 +19,7 @@ const LaunchThread = (index) => {
 
     //launch
     currentBlockEnd = Math.min(currentBlock + stepBlock, endBlock);
-    const thread = spawn('node', ['app.js', currentBlock, currentBlockEnd, 'scan_' + currentBlock + '_' + currentBlockEnd + '.js']);
+    const thread = spawn('node', ['app.js', currentBlock, currentBlockEnd, 'scan_' + currentBlock + '_' + currentBlockEnd + '.json']);
     threads[index] = thread;
 
     console.log(currentBlock, currentBlockEnd);
