@@ -9,6 +9,8 @@ let value = '';
 let group = null;
 fs.readdir('./scans',(err, files) => {
     files.forEach(file => {
+        if(file.toLowerCase().indexOf('.json') == -1)
+            return;
         source = require('./scans/' + file);
         i = source.length;
         while(i-- > 1){
